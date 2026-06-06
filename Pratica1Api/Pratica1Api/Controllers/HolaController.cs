@@ -11,7 +11,7 @@ namespace Pratica1Api.Controllers
         {
             return Ok(new
             {
-                mensaje = $"Bienvenido {nombre}"
+                mensaje = $"Bienvenido {nombre}" 
             });
         }
     }

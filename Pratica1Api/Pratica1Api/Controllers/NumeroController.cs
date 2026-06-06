@@ -16,11 +16,42 @@ namespace Pratica1Api.Controllers
         {
             return View();
         }
-
+        [HttpGet("analizar")]
         // GET: NumeroController/Create
-        public ActionResult Create()
+        public ActionResult Analizar (int n)
         {
-            return View();
+            bool esPar = n % 2 == 0;
+            bool esPrimo = EsPrimo(n);
+
+            string signo;
+
+            if (n > 0)
+                signo = "Positivo";
+            else if (n < 0)
+                signo = "Negativo";
+            else
+                signo = "Cero";
+
+            return Ok(new
+            {
+                Numero = n,
+                EsPar = esPar,
+                EsPrimo = esPrimo,
+                Tipo = signo
+            });
+        }
+
+        private bool EsPrimo(int numero)
+        {
+            if (numero <= 1)
+                return false;
+
+            for (int i = 2; i < numero; i++)
+            {
+                if (numero % i == 0)
+                    return false;
+            }
+            return true;
         }
 
         // POST: NumeroController/Create
