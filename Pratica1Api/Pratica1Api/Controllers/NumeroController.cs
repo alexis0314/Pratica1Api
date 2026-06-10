@@ -41,7 +41,7 @@ namespace Pratica1Api.Controllers
             });
         }
 
-        private bool EsPrimo(int numero)
+        private bool EsPrimo(int numero)    
         {
             if (numero <= 1)
                 return false;
