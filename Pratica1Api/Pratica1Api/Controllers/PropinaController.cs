@@ -8,18 +8,18 @@ namespace Pratica1Api.Controllers
     [ApiController]
     public class PropinaController : ControllerBase
     {
-        // GET: api/<PropinaController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        
+        [HttpGet("agregar")]
+        public IActionResult Agregar(DateTime fecha, int dias)
         {
-            return new string[] { "value1", "value2" };
-        }
+            DateTime nuevaFecha = fecha.AddDays(dias);
 
-        // GET api/<PropinaController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
+            return Ok(new
+            {
+                fechaOriginal = fecha,
+                diasAgregados = dias,
+                nuevaFecha
+            });
         }
 
         // POST api/<PropinaController>

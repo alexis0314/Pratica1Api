@@ -8,17 +8,29 @@ namespace Pratica1Api.Controllers
     [ApiController]
     public class FechasController : ControllerBase
     {
-        [HttpGet("formatear")]
-        public IActionResult Formatear(int segundos)
+      [HttpGet("diferencia")]
+        public IActionResult Diferencia(DateTime desde, DateTime hasta)
         {
-            TimeSpan tiempo = TimeSpan.FromSeconds(segundos);
+            int dias = (hasta - desde).Days;
 
             return Ok(new
             {
-                horas = tiempo.Hours,
-                minutos = tiempo.Minutes,
-                segundos = tiempo.Seconds,
-                formato = tiempo.ToString(@"hh\:mm\:ss")
+                desde,
+                hasta,
+                dias
+            });
+        }
+
+        [HttpGet("agregar")]
+        public IActionResult Agregar(DateTime fecha, int dias)
+        {
+            DateTime nuevaFecha = fecha.AddDays(dias);
+
+            return Ok(new
+            {
+                fechaOriginal = fecha,
+                diasAgregados = dias,
+                nuevaFecha
             });
         }
 
