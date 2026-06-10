@@ -6,35 +6,35 @@ namespace Pratica1Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FechasController : ControllerBase
+    public class PropinaController : ControllerBase
     {
-        [HttpGet("formatear")]
-        public IActionResult Formatear(int segundos)
+        // GET: api/<PropinaController>
+        [HttpGet]
+        public IEnumerable<string> Get()
         {
-            TimeSpan tiempo = TimeSpan.FromSeconds(segundos);
-
-            return Ok(new
-            {
-                horas = tiempo.Hours,
-                minutos = tiempo.Minutes,
-                segundos = tiempo.Seconds,
-                formato = tiempo.ToString(@"hh\:mm\:ss")
-            });
+            return new string[] { "value1", "value2" };
         }
 
-        // POST api/<FechasController>
+        // GET api/<PropinaController>/5
+        [HttpGet("{id}")]
+        public string Get(int id)
+        {
+            return "value";
+        }
+
+        // POST api/<PropinaController>
         [HttpPost]
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/<FechasController>/5
+        // PUT api/<PropinaController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/<FechasController>/5
+        // DELETE api/<PropinaController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

@@ -8,18 +8,18 @@ namespace Pratica1Api.Controllers
     [ApiController]
     public class TiempoController : ControllerBase
     {
-        // GET: api/<TiempoController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        [HttpGet("formatear")]
+        public IActionResult Formatear(int segundos)
         {
-            return new string[] { "value1", "value2" };
-        }
+            TimeSpan tiempo = TimeSpan.FromSeconds(segundos);
 
-        // GET api/<TiempoController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
+            return Ok(new
+            {
+                horas = tiempo.Hours,
+                minutos = tiempo.Minutes,
+                segundos = tiempo.Seconds,
+                formato = tiempo.ToString(@"hh\:mm\:ss")
+            });
         }
 
         // POST api/<TiempoController>
