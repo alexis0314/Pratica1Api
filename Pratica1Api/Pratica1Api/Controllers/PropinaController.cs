@@ -8,17 +8,18 @@ namespace Pratica1Api.Controllers
     [ApiController]
     public class PropinaController : ControllerBase
     {
-        
-        [HttpGet("agregar")]
-        public IActionResult Agregar(DateTime fecha, int dias)
+        [HttpGet("calcular")]
+        public IActionResult Calcular(decimal monto, decimal porcentaje)
         {
-            DateTime nuevaFecha = fecha.AddDays(dias);
+            decimal propina = monto * porcentaje / 100;
+
+            decimal total = monto + propina;
 
             return Ok(new
             {
-                fechaOriginal = fecha,
-                diasAgregados = dias,
-                nuevaFecha
+                monto,
+                propina,
+                total
             });
         }
 
